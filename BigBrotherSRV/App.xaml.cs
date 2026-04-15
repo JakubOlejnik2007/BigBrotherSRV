@@ -5,11 +5,16 @@
         public App()
         {
             InitializeComponent();
+
+            MainPage = new AppShell();
+
+            StartServer();
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
+        private async void StartServer()
         {
-            return new Window(new AppShell());
+            TcpServer server = new TcpServer();
+            await Task.Run(() => server.StartAsync());
         }
     }
 }

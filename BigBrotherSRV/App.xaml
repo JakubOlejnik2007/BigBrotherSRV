@@ -11,17 +11,22 @@
             </Style>
             <Style TargetType="ContentPage" x:Key="MainPage">
                 <Setter Property="BackgroundColor" Value="#1B1B1B" />
+                
+
             </Style>
 
 
             <Style x:Key="Headline" TargetType="Label">
                 <Setter Property="TextColor" Value="#FF658F" />
-                <Setter Property="FontSize" Value="32" />
+                <Setter Property="FontSize" Value="52" />
+                <Setter Property="FontFamily" Value="RobotoExtraLight" />
             </Style>
 
             <Style x:Key="SubHeadline" TargetType="Label">
                 <Setter Property="TextColor" Value="White" />
                 <Setter Property="FontSize" Value="18" />
+                <Setter Property="FontFamily" Value="Roboto" />
+
             </Style>
 
         </ResourceDictionary>

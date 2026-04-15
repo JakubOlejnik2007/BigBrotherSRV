@@ -64,29 +64,111 @@
                         <RoundRectangle CornerRadius="6" />
                     </Border.StrokeShape>
 
-                    <Label Text="Hello" TextColor="White"/>
-                </Border>
-                <!-- Card 1 -->
+                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
 
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <Image 
+                         
+                            Grid.Row="0"
+                            HeightRequest="150"
+                            BackgroundColor="#3A171F" />
+                        <BoxView 
+                            Grid.Row="1"
+                            HeightRequest="1"
+                            BackgroundColor="#353535" />
+                        <Label
+                            Grid.Row="2"
+                           Text="127.0.0.1"
+                           VerticalOptions="End"
+                           HorizontalOptions="Start"
+                           Margin="0,0,0,0" />
+                        
+                    </Grid>
+                </Border>
                 <Border Grid.Row="0" Grid.Column="1"
                   Style="{StaticResource CardBorderStyle}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="6" />
                     </Border.StrokeShape>
 
-                    <Label Text="Hello" TextColor="White"/>
+                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <Image 
+                         
+                            Grid.Row="0"
+                            HeightRequest="150"
+                            BackgroundColor="#3A171F" />
+                        <BoxView 
+                            Grid.Row="1"
+                            HeightRequest="1"
+                            BackgroundColor="#353535" />
+                        <Label
+                            Grid.Row="2"
+                           Text="127.0.0.1"
+                           VerticalOptions="End"
+                           HorizontalOptions="Start"
+                           Margin="0,0,0,0" />
+
+                    </Grid>
                 </Border>
-                <!-- Card 1 -->
                 <Border Grid.Row="0" Grid.Column="2"
                   Style="{StaticResource CardBorderStyle}">
                     <Border.StrokeShape>
                         <RoundRectangle CornerRadius="6" />
                     </Border.StrokeShape>
 
-                    <Label Text="Hello" TextColor="White"/>
+                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                            <RowDefinition Height="1" />
+                            <RowDefinition Height="20" />
+                        </Grid.RowDefinitions>
+
+                        <Image 
+                         
+                            Grid.Row="0"
+                            HeightRequest="150"
+                            BackgroundColor="#3A171F" />
+                        <BoxView 
+                            Grid.Row="1"
+                            HeightRequest="1"
+                            BackgroundColor="#353535" />
+                        <Label
+                            Grid.Row="2"
+                           Text="127.0.0.1"
+                           VerticalOptions="End"
+                           HorizontalOptions="Start"
+                           Margin="0,0,0,0" />
+
+                    </Grid>
                 </Border>
 
-                
+
+
             </Grid>
         </ScrollView>
 

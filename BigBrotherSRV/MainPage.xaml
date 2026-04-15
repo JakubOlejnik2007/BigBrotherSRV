@@ -54,65 +54,79 @@
                 </Grid.RowDefinitions>
 
                 <!-- Card 1 -->
-                <Border Grid.Row="0" Grid.Column="0"
-                  Style="{StaticResource CardBorderStyle}">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="6" />
-                    </Border.StrokeShape>
+                <CollectionView ItemsSource="{Binding}" Grid.Column="0">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical"
+                         Span="3" />
+                    </CollectionView.ItemsLayout>
 
-                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource CardBorderStyle}">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="6" />
+                                </Border.StrokeShape>
 
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                                <Grid Padding="0" ColumnSpacing="0" RowSpacing="7">
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="150" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="150" />
+                                        <RowDefinition Height="1" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
 
-                        <Image 
-                            
-                            Grid.Row="0"
-                            HeightRequest="150"
-                            BackgroundColor="#3A171F" />
-                        <BoxView 
-                            Grid.Row="1"
-                            HeightRequest="1"
-                            BackgroundColor="#353535" />
+                                    <!-- SCREENSHOT -->
+                                    <Image
+                        Grid.Row="0"
+                        HeightRequest="150"
+                        Source="{Binding ScreenPath}"
+                        Aspect="AspectFill"
+                        BackgroundColor="#3A171F" />
 
-                        <Grid Grid.Row="2"
-                              ColumnDefinitions="*,Auto"
-                              VerticalOptions="Center">
+                                    <!-- LINIA -->
+                                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        BackgroundColor="#353535" />
 
-                            <Label
-                            Text="127.0.0.1"
+                                    <!-- FOOTER -->
+                                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,Auto"
+                          VerticalOptions="Center">
+
+                                        <!-- IP -->
+                                        <Label
+                            Text="{Binding IP}"
                             TextColor="White"
                             VerticalOptions="Center"
                             HorizontalOptions="Start" />
-                            <Grid Grid.Column="1"
+
+                                        <!-- ICONS -->
+                                        <Grid Grid.Column="1"
                               ColumnDefinitions="Auto,Auto"
                               ColumnSpacing="6"
                               VerticalOptions="Center"
                               HorizontalOptions="End">
-                                <Image Source="lockclose.png"
-                               WidthRequest="14"
-                               HeightRequest="14"
-                               Aspect="AspectFit" />
 
-                                <Image Source="eye.png"
-               Grid.Column="1"
-               WidthRequest="14"
-               HeightRequest="14"
-               Aspect="AspectFit" />
+                                            <Image Source="lockclose.png"
+                                   WidthRequest="14"
+                                   HeightRequest="14"
+                                   Aspect="AspectFit" />
 
-                            </Grid>
+                                            <Image Source="eye.png"
+                                   Grid.Column="1"
+                                   WidthRequest="14"
+                                   HeightRequest="14"
+                                   Aspect="AspectFit" />
+                                        </Grid>
 
-                        </Grid>
+                                    </Grid>
 
-                    </Grid>
-                </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
 
 
 

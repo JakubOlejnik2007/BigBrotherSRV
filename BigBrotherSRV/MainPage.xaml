@@ -85,13 +85,40 @@
                             Grid.Row="1"
                             HeightRequest="1"
                             BackgroundColor="#353535" />
-                        <Label
-                            Grid.Row="2"
-                           Text="127.0.0.1"
-                           VerticalOptions="End"
-                           HorizontalOptions="Start"
-                           Margin="0,0,0,0" />
-                        
+
+                        <Grid Grid.Row="2"
+      ColumnDefinitions="*,Auto"
+      VerticalOptions="Center">
+
+                            <!-- LEFT: Text -->
+                            <Label
+        Text="127.0.0.1"
+        TextColor="White"
+        VerticalOptions="Center"
+        HorizontalOptions="Start" />
+
+                            <!-- RIGHT: Icon group -->
+                            <Grid Grid.Column="1"
+          ColumnDefinitions="Auto,Auto"
+          ColumnSpacing="6"
+          VerticalOptions="Center"
+          HorizontalOptions="End">
+
+                                <Image Source="lockclose.png"
+               WidthRequest="14"
+               HeightRequest="14"
+               Aspect="AspectFit" />
+
+                                <Image Source="eye.png"
+               Grid.Column="1"
+               WidthRequest="14"
+               HeightRequest="14"
+               Aspect="AspectFit" />
+
+                            </Grid>
+
+                        </Grid>
+
                     </Grid>
                 </Border>
                 <Border Grid.Row="0" Grid.Column="1"

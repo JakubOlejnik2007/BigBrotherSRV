@@ -10,7 +10,7 @@ namespace BigBrotherSRV
 
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new MainPage();
 
             StartServer();
             StartUDP();

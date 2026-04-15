@@ -24,36 +24,64 @@
         <Label
             Grid.Row="0"
             Text="Big Brother"
-            
             Style="{StaticResource Headline}"
             VerticalOptions="End"
             HorizontalOptions="Start"
             Margin="15,0,0,15" />
+
         <BoxView 
-        Grid.Row="1"
-        HeightRequest="1"
-        BackgroundColor="#FF658F" />
+            Grid.Row="1"
+            HeightRequest="1"
+            BackgroundColor="#FF658F" />
+
         <ScrollView Grid.Row="2">
-            <VerticalStackLayout Padding="30,20" Spacing="25">
+            <Grid Padding="30,20" ColumnSpacing="20" RowSpacing="20">
 
-                <BoxView 
-                    HeightRequest="50"
-                    BackgroundColor="white">
-                    
-                    
-                        
-                </BoxView>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-                <Label
-                    Text="Welcome to&#10;.NET Multi-platform App UI"
-                    HorizontalOptions="Center" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
-                <Button
+                <!-- Card -->
+                <Border
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    WidthRequest="150"
+                    HeightRequest="120"
+                    StrokeThickness="0.5"
+                    Stroke="#5d5d5d"
+                    BackgroundColor="#282828"
+                    Padding="15">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+
+                    <Border.Shadow>
+                        <Shadow
+                            Brush="#000000"
+                            Offset="0,2"
+                            Radius="3"
+                            Opacity="0.7" />
+                    </Border.Shadow>
+
+                    <Label 
+                        Text="Hello"
+                        TextColor="White"/>
+                </Border>
+
+            </Grid>
+            <Button
+                    Grid.Row="1"
+                    Grid.Column="0"
                     x:Name="CounterBtn"
                     Text="Click me"
                     Clicked="OnCounterClicked" />
-
-            </VerticalStackLayout>
         </ScrollView>
 
     </Grid>

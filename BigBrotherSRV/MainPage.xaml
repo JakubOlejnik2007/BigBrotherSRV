@@ -11,7 +11,6 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <!-- Header background -->
         <BoxView Grid.Row="0">
             <BoxView.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -22,7 +21,6 @@
             </BoxView.Background>
         </BoxView>
 
-        <!-- Title -->
         <Label
             Grid.Row="0"
             Text="Big Brother"
@@ -31,13 +29,11 @@
             HorizontalOptions="Start"
             Margin="15,0,0,15" />
 
-        <!-- Divider -->
         <BoxView 
             Grid.Row="1"
             HeightRequest="1"
             BackgroundColor="#FF658F" />
 
-        <!-- Content -->
         <ScrollView Grid.Row="2">
             <Grid Padding="30,20" ColumnSpacing="20" RowSpacing="20" >
 
@@ -77,7 +73,7 @@
                         </Grid.RowDefinitions>
 
                         <Image 
-                         
+                            
                             Grid.Row="0"
                             HeightRequest="150"
                             BackgroundColor="#3A171F" />
@@ -87,27 +83,23 @@
                             BackgroundColor="#353535" />
 
                         <Grid Grid.Row="2"
-      ColumnDefinitions="*,Auto"
-      VerticalOptions="Center">
+                              ColumnDefinitions="*,Auto"
+                              VerticalOptions="Center">
 
-                            <!-- LEFT: Text -->
                             <Label
-        Text="127.0.0.1"
-        TextColor="White"
-        VerticalOptions="Center"
-        HorizontalOptions="Start" />
-
-                            <!-- RIGHT: Icon group -->
+                            Text="127.0.0.1"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Start" />
                             <Grid Grid.Column="1"
-          ColumnDefinitions="Auto,Auto"
-          ColumnSpacing="6"
-          VerticalOptions="Center"
-          HorizontalOptions="End">
-
+                              ColumnDefinitions="Auto,Auto"
+                              ColumnSpacing="6"
+                              VerticalOptions="Center"
+                              HorizontalOptions="End">
                                 <Image Source="lockclose.png"
-               WidthRequest="14"
-               HeightRequest="14"
-               Aspect="AspectFit" />
+                               WidthRequest="14"
+                               HeightRequest="14"
+                               Aspect="AspectFit" />
 
                                 <Image Source="eye.png"
                Grid.Column="1"
@@ -118,78 +110,6 @@
                             </Grid>
 
                         </Grid>
-
-                    </Grid>
-                </Border>
-                <Border Grid.Row="0" Grid.Column="1"
-                  Style="{StaticResource CardBorderStyle}">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="6" />
-                    </Border.StrokeShape>
-
-                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="150" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
-
-                        <Image 
-                         
-                            Grid.Row="0"
-                            HeightRequest="150"
-                            BackgroundColor="#3A171F" />
-                        <BoxView 
-                            Grid.Row="1"
-                            HeightRequest="1"
-                            BackgroundColor="#353535" />
-                        <Label
-                            Grid.Row="2"
-                           Text="127.0.0.1"
-                           VerticalOptions="End"
-                           HorizontalOptions="Start"
-                           Margin="0,0,0,0" />
-
-                    </Grid>
-                </Border>
-                <Border Grid.Row="0" Grid.Column="2"
-                  Style="{StaticResource CardBorderStyle}">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="6" />
-                    </Border.StrokeShape>
-
-                    <Grid Padding="0,0" ColumnSpacing="0" RowSpacing="7" >
-
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="150" />
-                            <RowDefinition Height="1" />
-                            <RowDefinition Height="20" />
-                        </Grid.RowDefinitions>
-
-                        <Image 
-                         
-                            Grid.Row="0"
-                            HeightRequest="150"
-                            BackgroundColor="#3A171F" />
-                        <BoxView 
-                            Grid.Row="1"
-                            HeightRequest="1"
-                            BackgroundColor="#353535" />
-                        <Label
-                            Grid.Row="2"
-                           Text="127.0.0.1"
-                           VerticalOptions="End"
-                           HorizontalOptions="Start"
-                           Margin="0,0,0,0" />
 
                     </Grid>
                 </Border>

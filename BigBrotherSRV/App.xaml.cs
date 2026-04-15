@@ -1,4 +1,6 @@
-﻿namespace BigBrotherSRV
+﻿using Microsoft.Maui.Controls;
+
+namespace BigBrotherSRV
 {
     public partial class App : Application
     {
@@ -7,11 +9,22 @@
             Application.Current.UserAppTheme = AppTheme.Dark;
 
             InitializeComponent();
-        }
 
-        protected override Window CreateWindow(IActivationState? activationState)
+            MainPage = new AppShell();
+
+            StartServer();
+            StartUDP();
+        }
+        private async void StartUDP()
         {
-            return new Window(new MainPage());
+
+            UdpServer server = new UdpServer();
+            await Task.Run(() => server.StartAsync());
+        }
+        private async void StartServer()
+        {
+            TcpServer server = new TcpServer();
+            await Task.Run(() => server.StartAsync());
         }
     }
 }

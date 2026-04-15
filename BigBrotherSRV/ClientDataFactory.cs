@@ -1,4 +1,5 @@
-﻿using System.Net.Sockets;
+﻿using System.Collections.ObjectModel;
+using System.Net.Sockets;
 
 public static class ClientDataFactory
 {
@@ -52,7 +53,7 @@ public static class ClientDataFactory
         return ClientStore.Clients.FirstOrDefault(x => x.IP == ip);
     }
 
-    public static List<ClientData> GetAll()
+    public static ObservableCollection<ClientData> GetAll()
     {
         return ClientStore.Clients;
     }

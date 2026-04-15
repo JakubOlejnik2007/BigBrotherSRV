@@ -1,11 +1,38 @@
 ﻿using System;
-
+using System.ComponentModel;
 using System.Net.Sockets;
 
-public class ClientData
+public class ClientData : INotifyPropertyChanged
 {
     public string IP { get; set; }
     public TcpClient Client { get; set; }
-    public DateTime LastSeen { get; set; }
-    public string ScreenPath { get; set; }
+
+    DateTime lastSeen;
+    public DateTime LastSeen
+    {
+        get => lastSeen;
+        set
+        {
+            if (lastSeen == value) return;
+            lastSeen = value;
+            OnPropertyChanged(nameof(LastSeen));
+        }
+    }
+
+    string screenPath;
+    public string ScreenPath
+    {
+        get => screenPath;
+        set
+        {
+            if (screenPath == value) return;
+            screenPath = value;
+            OnPropertyChanged(nameof(ScreenPath));
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    void OnPropertyChanged(string name)
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

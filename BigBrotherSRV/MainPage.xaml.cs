@@ -7,9 +7,11 @@
         public MainPage()
         {
             InitializeComponent();
+            BindingContext = ClientStore.Clients;
         }
 
 
     }
 
 }
+

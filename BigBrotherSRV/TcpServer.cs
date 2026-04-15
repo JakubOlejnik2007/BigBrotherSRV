@@ -15,6 +15,7 @@ public class TcpServer
         {
             var client = await listener.AcceptTcpClientAsync();
             _ = HandleClient(client);
+
         }
     }
 
@@ -22,6 +23,14 @@ public class TcpServer
     {
         var stream = client.GetStream();
 
+        string ip = client.Client.RemoteEndPoint.ToString();
+        var clientData = new ClientData
+        {
+            IP = ip,
+            Client = client,
+            LastSeen = DateTime.Now,
+           ScreenPath = null
+        };
         try
         {
             while (true)
@@ -41,9 +50,13 @@ public class TcpServer
                 {
                     System.Diagnostics.Debug.WriteLine(
                         $"Ping od: {client.Client.RemoteEndPoint}");
+
+                    ClientDataFactory.AddOrGet(client);
+
                 }
                 else if (message.StartsWith("SCREENSHOT|"))
                 {
+
                     string base64 = message.Substring("SCREENSHOT|".Length);
 
                     byte[] imageBytes = Convert.FromBase64String(base64);
@@ -54,6 +67,8 @@ public class TcpServer
 
                     File.WriteAllBytes(path, imageBytes);
 
+                    ClientDataFactory.UpdateScreenPath(ip, path);
+
                     System.Diagnostics.Debug.WriteLine(path);
                     System.Diagnostics.Debug.WriteLine("Zapisano screenshot");
                 }
@@ -62,10 +77,6 @@ public class TcpServer
         catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine(ex.Message);
-        }
-        finally
-        {
-            client.Close();
         }
     }
     private async Task<int> ReadExact(NetworkStream stream, byte[] buffer, int size)
@@ -82,4 +93,12 @@ public class TcpServer
 
         return offset;
     }
+
+    private async Task SendCommand(TcpClient client, string msg)
+    {
+        var stream = client.GetStream();
+        byte[] data = Encoding.UTF8.GetBytes(msg);
+        await stream.WriteAsync(data, 0, data.Length);
+    }
+
 }

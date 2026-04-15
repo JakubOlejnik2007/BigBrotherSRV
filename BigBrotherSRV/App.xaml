@@ -28,7 +28,23 @@
                 <Setter Property="FontFamily" Value="Roboto" />
 
             </Style>
+            
+            <Style x:Key="CardBorderStyle" TargetType="Border">
+                <Setter Property="StrokeThickness" Value="0.5" />
+                <Setter Property="Stroke" Value="#5d5d5d" />
+                <Setter Property="BackgroundColor" Value="#282828" />
+                <Setter Property="Padding" Value="5" />
+                <Setter Property="HeightRequest" Value="200" />
 
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#000000"
+                            Offset="0,2"
+                            Radius="3"
+                            Opacity="0.7" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 

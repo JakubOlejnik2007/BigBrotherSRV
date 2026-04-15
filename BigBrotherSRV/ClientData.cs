@@ -33,6 +33,20 @@ public class ClientData : INotifyPropertyChanged
 
     public event PropertyChangedEventHandler PropertyChanged;
 
+    bool locked;
+    public bool locked
+    {
+        get => locked;
+        set
+        {
+            if (locked == value) return;
+            locked = value;
+            OnPropertyChanged(nameof(locked));
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
     void OnPropertyChanged(string name)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 }

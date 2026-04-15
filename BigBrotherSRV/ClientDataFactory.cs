@@ -20,7 +20,8 @@ public static class ClientDataFactory
             IP = ip,
             Client = client,
             LastSeen = DateTime.Now,
-            ScreenPath = null
+            ScreenPath = null,
+            locked = false
         };
 
         ClientStore.Clients.Add(newClient);

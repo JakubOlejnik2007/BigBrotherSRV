@@ -109,9 +109,13 @@
                               HorizontalOptions="End">
 
                                             <Image Source="lockclose.png"
-                                   WidthRequest="14"
-                                   HeightRequest="14"
-                                   Aspect="AspectFit" />
+       WidthRequest="14"
+       HeightRequest="14"
+       Aspect="AspectFit">
+                                                <Image.GestureRecognizers>
+                                                    <TapGestureRecognizer Tapped="OnLockClicked"/>
+                                                </Image.GestureRecognizers>
+                                            </Image>
 
                                             <Image Source="eye.png"
                                    Grid.Column="1"

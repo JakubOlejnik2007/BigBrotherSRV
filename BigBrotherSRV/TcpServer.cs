@@ -21,26 +21,65 @@ public class TcpServer
     private async Task HandleClient(TcpClient client)
     {
         var stream = client.GetStream();
-        byte[] buffer = new byte[10_000_000];
 
-        int bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
-
-        string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-
-        if (message.StartsWith("PING"))
+        try
         {
-            System.Diagnostics.Debug.WriteLine($"Ping od: {client.Client.RemoteEndPoint}");
+            while (true)
+            {
+                byte[] lengthBytes = new byte[4];
+                int read = await ReadExact(stream, lengthBytes, 4);
+                if (read == 0) return;
+
+                int length = BitConverter.ToInt32(lengthBytes, 0);
+
+                byte[] buffer = new byte[length];
+                await ReadExact(stream, buffer, length);
+
+                string message = Encoding.UTF8.GetString(buffer);
+
+                if (message.StartsWith("PING"))
+                {
+                    System.Diagnostics.Debug.WriteLine(
+                        $"Ping od: {client.Client.RemoteEndPoint}");
+                }
+                else if (message.StartsWith("SCREENSHOT|"))
+                {
+                    string base64 = message.Substring("SCREENSHOT|".Length);
+
+                    byte[] imageBytes = Convert.FromBase64String(base64);
+
+                    string path = Path.Combine(
+                        AppContext.BaseDirectory,
+                        $"screen_{DateTime.Now.Ticks}.png");
+
+                    File.WriteAllBytes(path, imageBytes);
+
+                    System.Diagnostics.Debug.WriteLine(path);
+                    System.Diagnostics.Debug.WriteLine("Zapisano screenshot");
+                }
+            }
         }
-        else if (message.StartsWith("SCREENSHOT"))
+        catch (Exception ex)
         {
-            var data = message.Substring("SCREENSHOT".Length);
+            System.Diagnostics.Debug.WriteLine(ex.Message);
+        }
+        finally
+        {
+            client.Close();
+        }
+    }
+    private async Task<int> ReadExact(NetworkStream stream, byte[] buffer, int size)
+    {
+        int offset = 0;
 
-            byte[] imageBytes = Convert.FromBase64String(data);
-            File.WriteAllBytes($"screen_{DateTime.Now.Ticks}.png", imageBytes);
+        while (offset < size)
+        {
+            int read = await stream.ReadAsync(buffer, offset, size - offset);
+            if (read == 0) return 0;
 
-            System.Diagnostics.Debug.WriteLine("Zapisano screenshot");
+            offset += read;
         }
 
-        client.Close();
+        return offset;
     }
 }

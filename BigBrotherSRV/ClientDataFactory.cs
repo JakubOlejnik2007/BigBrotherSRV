@@ -21,7 +21,7 @@ public static class ClientDataFactory
             Client = client,
             LastSeen = DateTime.Now,
             ScreenPath = null,
-            locked = false
+            Locked = false
         };
 
         ClientStore.Clients.Add(newClient);

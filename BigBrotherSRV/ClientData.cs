@@ -34,7 +34,7 @@ public class ClientData : INotifyPropertyChanged
     public event PropertyChangedEventHandler PropertyChanged;
 
     bool locked;
-    public bool locked
+    public bool Locked
     {
         get => locked;
         set
@@ -45,7 +45,6 @@ public class ClientData : INotifyPropertyChanged
         }
     }
 
-    public event PropertyChangedEventHandler PropertyChanged;
 
     void OnPropertyChanged(string name)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));

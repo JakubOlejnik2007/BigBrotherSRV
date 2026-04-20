@@ -35,106 +35,90 @@
             BackgroundColor="#FF658F" />
 
         <ScrollView Grid.Row="2">
-            <Grid Padding="30,20" ColumnSpacing="20" RowSpacing="20" >
+            <CollectionView
+                ItemsSource="{Binding}"
+                Margin="30,20">
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="300" />
-                    <ColumnDefinition Width="300" />
-                </Grid.ColumnDefinitions>
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="3"
+                        HorizontalItemSpacing="20"
+                        VerticalItemSpacing="20" />
+                </CollectionView.ItemsLayout>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="200" />
-                    <RowDefinition Height="200" />
-                </Grid.RowDefinitions>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource CardBorderStyle}">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="6" />
+                            </Border.StrokeShape>
 
-                <!-- Card 1 -->
-                <CollectionView ItemsSource="{Binding}" Grid.Column="0">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical"
-                         Span="3" />
-                    </CollectionView.ItemsLayout>
+                            <Grid Padding="0" ColumnSpacing="0" RowSpacing="7">
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border Style="{StaticResource CardBorderStyle}">
-                                <Border.StrokeShape>
-                                    <RoundRectangle CornerRadius="6" />
-                                </Border.StrokeShape>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="150" />
+                                    <RowDefinition Height="1" />
+                                    <RowDefinition Height="20" />
+                                </Grid.RowDefinitions>
 
-                                <Grid Padding="0" ColumnSpacing="0" RowSpacing="7">
+                                <!-- SCREENSHOT -->
+                                <Image
+                                    Grid.Row="0"
+                                    HeightRequest="150"
+                                    Source="{Binding ScreenPath}"
+                                    Aspect="AspectFill"
+                                    BackgroundColor="#3A171F" />
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="150" />
-                                        <RowDefinition Height="1" />
-                                        <RowDefinition Height="20" />
-                                    </Grid.RowDefinitions>
+                                <!-- LINIA -->
+                                <BoxView
+                                    Grid.Row="1"
+                                    HeightRequest="1"
+                                    BackgroundColor="#353535" />
 
-                                    <!-- SCREENSHOT -->
-                                    <Image
-                        Grid.Row="0"
-                        HeightRequest="150"
-                        Source="{Binding ScreenPath}"
-                        Aspect="AspectFill"
-                        BackgroundColor="#3A171F" />
+                                <!-- FOOTER -->
+                                <Grid Grid.Row="2"
+                                      Padding="8,0"
+                                      ColumnDefinitions="*,Auto"
+                                      VerticalOptions="Center">
 
-                                    <!-- LINIA -->
-                                    <BoxView
-                        Grid.Row="1"
-                        HeightRequest="1"
-                        BackgroundColor="#353535" />
+                                    <!-- IP -->
+                                    <Label
+                                        Text="{Binding IP}"
+                                        TextColor="White"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Start" />
 
-                                    <!-- FOOTER -->
-                                    <Grid Grid.Row="2"
-                          ColumnDefinitions="*,Auto"
-                          VerticalOptions="Center">
+                                    <!-- ICONS -->
+                                    <Grid Grid.Column="1"
+                                          ColumnDefinitions="Auto,Auto"
+                                          ColumnSpacing="6"
+                                          VerticalOptions="Center"
+                                          HorizontalOptions="End">
 
-                                        <!-- IP -->
-                                        <Label
-                            Text="{Binding IP}"
-                            TextColor="White"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Start" />
+                                        <Image Source="lockclose.png"
+                                               WidthRequest="14"
+                                               HeightRequest="14"
+                                               Aspect="AspectFit">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Tapped="OnLockClicked"/>
+                                            </Image.GestureRecognizers>
+                                        </Image>
 
-                                        <!-- ICONS -->
-                                        <Grid Grid.Column="1"
-                              ColumnDefinitions="Auto,Auto"
-                              ColumnSpacing="6"
-                              VerticalOptions="Center"
-                              HorizontalOptions="End">
-
-                                            <Image Source="lockclose.png"
-       WidthRequest="14"
-       HeightRequest="14"
-       Aspect="AspectFit">
-                                                <Image.GestureRecognizers>
-                                                    <TapGestureRecognizer Tapped="OnLockClicked"/>
-                                                </Image.GestureRecognizers>
-                                            </Image>
-
-                                            <Image Source="eye.png"
-                                   Grid.Column="1"
-                                   WidthRequest="14"
-                                   HeightRequest="14"
-                                   Aspect="AspectFit" />
-                                        </Grid>
-
+                                        <Image Source="eye.png"
+                                               Grid.Column="1"
+                                               WidthRequest="14"
+                                               HeightRequest="14"
+                                               Aspect="AspectFit" />
                                     </Grid>
 
                                 </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
 
-
-
-            </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </ScrollView>
 
     </Grid>

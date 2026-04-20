@@ -11,6 +11,7 @@ namespace BigBrotherSRV
         {
             InitializeComponent();
             BindingContext = ClientStore.Clients;
+            ClientMonitor.Start();
         }
 
 
@@ -24,8 +25,18 @@ namespace BigBrotherSRV
 
             string ip = client.IP;
 
-            // tutaj wysyłasz komendę do serwera
-           SendCommand(client.Client, "CMD|LOCK");
+            if (client.Locked)
+            {
+                SendCommand(client.Client, "CMD|UNLOCK");
+                client.Locked = false;
+                image.Source = "lockopen.png";
+            }
+            else
+            {
+                SendCommand(client.Client, "CMD|LOCK");
+                client.Locked = true;
+                image.Source = "lockclose.png";
+            }
         }
         async Task SendCommand(TcpClient client, string msg)
         {

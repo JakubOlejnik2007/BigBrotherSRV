@@ -96,7 +96,7 @@
                                           VerticalOptions="Center"
                                           HorizontalOptions="End">
 
-                                        <Image Source="lockclose.png"
+                                        <Image Source="lockopen.png"
                                                WidthRequest="14"
                                                HeightRequest="14"
                                                Aspect="AspectFit">

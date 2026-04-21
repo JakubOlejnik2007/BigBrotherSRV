@@ -35,6 +35,7 @@ public class TcpServer
         {
             while (true)
             {
+                ClientDataFactory.UpdateLastSeen(ip);
                 byte[] lengthBytes = new byte[4];
                 int read = await ReadExact(stream, lengthBytes, 4);
                 if (read == 0) return;

@@ -13,14 +13,17 @@ namespace BigBrotherSRV
             MainPage = new MainPage();
 
             StartServer();
-            StartUDP();
-        }
-        private async void StartUDP()
-        {
 
-            UdpServer server = new UdpServer();
-            await Task.Run(() => server.StartAsync());
+            UdpServer.Main();
+
+            //StartUDP();
         }
+        //private async void StartUDP()
+        //{
+
+        //    UdpServer server = new UdpServer();
+        //    await Task.Run(() => server.StartAsync());
+        //}
         private async void StartServer()
         {
             TcpServer server = new TcpServer();

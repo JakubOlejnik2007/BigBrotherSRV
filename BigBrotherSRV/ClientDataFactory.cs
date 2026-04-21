@@ -24,6 +24,7 @@ public static class ClientDataFactory
             Locked = false
         };
 
+        UpdateLastSeen(ip);
         ClientStore.Clients.Add(newClient);
 
         return newClient;

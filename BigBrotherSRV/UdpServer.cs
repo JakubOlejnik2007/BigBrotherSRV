@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,18 @@ class UdpServer
             _ = HandleRequestAsync(udp, result);
         }
     }
+    static string GetLocalIPv4()
+    {
+        return NetworkInterface
+            .GetAllNetworkInterfaces()
+            .Where(i => i.OperationalStatus == OperationalStatus.Up)
+            .SelectMany(i => i.GetIPProperties().UnicastAddresses)
+            .Where(a =>
+                a.Address.AddressFamily == AddressFamily.InterNetwork &&
+                a.Address.ToString().StartsWith("10.10.10."))
+            .Select(a => a.Address.ToString())
+            .FirstOrDefault();
+    }
 
     static async Task HandleRequestAsync(UdpClient udp, UdpReceiveResult result)
     {
@@ -27,7 +40,7 @@ class UdpServer
         {
             Console.WriteLine($"Discovery od {result.RemoteEndPoint}");
 
-            string response = "10.10.10.114:6767";
+            string response = $"{GetLocalIPv4()}:6767";
             byte[] data = Encoding.UTF8.GetBytes(response);
 
             await udp.SendAsync(data, data.Length, result.RemoteEndPoint);
